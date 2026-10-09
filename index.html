@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAIPRO GLOBAL — Consultoría Amazon</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: #0A0A0A;
+      color: #F6F4EF;
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(246, 244, 239, 0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    nav {
+      display: flex;
+      gap: 40px;
+      font-size: 0.9rem;
+    }
+    nav a {
+      color: #F6F4EF;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #1FBF6B; }
+    .cta-header {
+      background: #1FBF6B;
+      color: #0A0A0A;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .cta-header:hover { background: #1aa85a; }
+    /* HERO */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 100px;
+    }
+    .hero .container { text-align: center; }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .hero .accent { color: #1FBF6B; }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .cta-main {
+      display: inline-block;
+      background: #1FBF6B;
+      color: #0A0A0A;
+      padding: 16px 40px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .cta-main:hover {
+      background: #1aa85a;
+      transform: translateY(-2px);
+    }
+    /* SECCIONES */
+    section {
+      padding: 100px 40px;
+      border-top: 1px solid rgba(246, 244, 239, 0.1);
+    }
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 60px;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+    section h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    /* SERVICIOS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .service-card {
+      padding: 40px;
+      background: rgba(246, 244, 239, 0.03);
+      border: 1px solid rgba(246, 244, 239, 0.1);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      background: rgba(31, 191, 107, 0.05);
+      border-color: rgba(31, 191, 107, 0.3);
+    }
+    .service-card h3 {
+      color: #1FBF6B;
+    }
+    .service-card p {
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+    /* MÉTODO */
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+    .step {
+      padding: 40px;
+      background: rgba(31, 191, 107, 0.05);
+      border-left: 4px solid #1FBF6B;
+      border-radius: 4px;
+    }
+    .step-num {
+      display: inline-block;
+      background: #1FBF6B;
+      color: #0A0A0A;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 50px;
+      font-weight: 900;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .step h3 {
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+    .step p {
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+    /* RESULTADOS */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .result-card {
+      text-align: center;
+      padding: 30px;
+    }
+    .result-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #1FBF6B;
+      margin-bottom: 10px;
+    }
+    .result-label {
+      opacity: 0.85;
+      font-size: 1rem;
+    }
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: rgba(246, 244, 239, 0.03);
+      border: 1px solid rgba(246, 244, 239, 0.1);
+      border-radius: 4px;
+    }
+    .faq-question {
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    .faq-answer {
+      opacity: 0.8;
+      margin-top: 15px;
+      line-height: 1.7;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-icon {
+      color: #1FBF6B;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    /* CTA SECTION */
+    .cta-section {
+      background: rgba(31, 191, 107, 0.1);
+      border: 1px solid rgba(31, 191, 107, 0.3);
+      padding: 80px 40px !important;
+      border-radius: 12px;
+    }
+    .cta-section h2 {
+      margin-bottom: 30px;
+    }
+    /* FOOTER */
+    footer {
+      padding: 60px 40px;
+      border-top: 1px solid rgba(246, 244, 239, 0.1);
+      text-align: center;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .header-content { padding: 16px 20px; }
+      nav { gap: 20px; font-size: 0.8rem; }
+      .container { padding: 0 20px; }
+      .hero { padding-top: 120px; padding-bottom: 60px; }
+      .hero h1 { font-size: 1.8rem; }
+      section { padding: 60px 20px; }
+      section h2 { font-size: 1.8rem; margin-bottom: 40px; }
+      .services-grid { gap: 30px; }
+      .service-card { padding: 30px; }
+      .method-steps { gap: 30px; }
+      .results-grid { gap: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">LAIPRO</div>
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="cta-header">Escribenos</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Consultoría y servicios para <span class="accent">vender en Amazon</span></h1>
+      <p>Estrategia de marca, optimización de cuentas y escalado de ventas. Sin permanencia, sin humo.</p>
+      <a href="#contacto" class="cta-main">Reservar sesión</a>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <h2>Qué hacemos</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Estrategia de Marca</h3>
+          <p>Imagen principal, galería, A+, contenido y posicionamiento. Diseñado para que te elijan en el resultado de búsqueda.</p>
+        </div>
+        <div class="service-card">
+          <h3>Gestión de Cuenta</h3>
+          <p>Seller Central, publicidad PPC, análisis de métricas y escalado. Control total de cada puja y cada palabra clave.</p>
+        </div>
+        <div class="service-card">
+          <h3>Logística y FBA</h3>
+          <p>Preparación de inventario, envíos a centros de distribución y gestión de stock en Amazon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="container">
+      <h2>Nuestro Método</h2>
+      <div class="method-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Analizamos tu nicho, tu competencia y tu cuenta. Identificamos qué falla y dónde están las oportunidades.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Estrategia</h3>
+          <p>Diseñamos una estrategia única de marca, pricing y posicionamiento para diferenciarte en Amazon.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Ejecución</h3>
+          <p>Implementamos cambios en tu cuenta, optimizamos tus listados y configuramos la publicidad.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Escalado</h3>
+          <p>Monitoreamos resultados, ajustamos en tiempo real y escalamos lo que funciona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Resultados</h2>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-number">+45%</div>
+          <div class="result-label">Aumento en CTR promedio</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">+60%</div>
+          <div class="result-label">Mejora en conversión</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">+150%</div>
+          <div class="result-label">Crecimiento en ventas</div>
+        </div>
+      </div>
+      <p style="text-align: center; opacity: 0.7; max-width: 700px; margin: 0 auto;">Resultados promedio de nuestros clientes en los primeros 6 meses. Casos reales, sin estimaciones.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <h2>Preguntas Frecuentes</h2>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cuánto cuesta vuestro servicio?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">Ofrecemos modelos flexibles: desde consultoría puntual hasta gestión completa de tu cuenta. Cada proyecto es diferente, así que lo primero es una sesión estratégica sin compromiso para valorar tu caso.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Necesito permanencia mínima?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">No. Trabajamos sin permanencia. Si no estás contento con los resultados, puedes parar cuando quieras. Nosotros nos enfocamos en entregar valor desde el primer mes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cuánto tardaré en ver resultados?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">Cambios en la estrategia de marca impactan en 2-4 semanas. Escalado con publicidad puede tomar 6-8 semanas para optimizar. Siempre será realista: no hay soluciones mágicas.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Trabajáis con cualquier categoría?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">Trabajamos con la mayoría de categorías en Amazon. Hay excepciones (medicinas, armas, etc). Lo mejor es que nos cuentes tu caso en la sesión inicial.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Podéis ayudarme a escalar desde cero?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">Sí. Desde la estrategia inicial, el diseño de imágenes, la configuración de la cuenta hasta el escalado con publicidad. Cubrimos todo el camino.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contacto">
+    <div class="container" style="text-align: center;">
+      <h2>¿Listo para crecer en Amazon?</h2>
+      <p>Reserva una sesión de estrategia. Sin compromiso. Sin humo.</p>
+      <a href="mailto:hola@laiproglobal.com" class="cta-main">hola@laiproglobal.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 LAIPRO GLOBAL LLC. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        question.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
